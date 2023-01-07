@@ -1,7 +1,7 @@
 Ensure output_pin eject_mode is setup in config file
 
 [output_pin eject_mode]
-pin: PD9
+pin: PD9 "define empty pin from you board.
 
 Add below Gcode_macro for End_Print:
 
@@ -12,15 +12,14 @@ gcode:
 	BED_EJECT
 	{% else %}
 	M117 "Normal End print mode"   
-    G92 E1      ;Retract the filament
-    G1 E-1 F300
-    
-    G92 Y0 Z0       ;reset Z position
-    G1 Z2
-    G1 Y10
-    G1 Z50       ;move z50
-    M104 S0		; Arret chauffe buse
-    M140 S0	    ; Arret chauffe plateau
-    SET_FAN_SPEED FAN=seconde_cooling_fan SPEED=0
-    M84
+   	G92 E1      ;Retract the filament
+    	G1 E-1 F300   
+    	G92 Y0 Z0       ;reset Z position
+    	G1 Z2
+    	G1 Y10
+    	G1 Z50       ;move z50
+    	M104 S0		; Arret chauffe buse
+    	M140 S0	    ; Arret chauffe plateau
+    	SET_FAN_SPEED FAN=seconde_cooling_fan SPEED=0
+    	M84
     {% endif %}
